@@ -13,5 +13,10 @@ public class Application extends Controller {
       List things = Thing.find("order by id desc").fetch();
       render(things);
     }
+    
+    public static void createThing(String title) {
+      Thing thing = new Thing(title).save();
+      renderJSON(thing);
+    }
 
 }

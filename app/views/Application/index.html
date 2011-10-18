@@ -8,8 +8,22 @@
 <ul>
   #{list items:things, as:"thing"}
     <li>
-      <input type="checkbox" id="${thing.id}" ${thing.done ? 'checked' : ''} />
+      <input type="checkbox" id="${thing.id}" ${thing.bought ? 'checked' : ''} />
       ${thing.title}
     </li>
   #{/list}
 </ul>
+
+<p>
+  <a id="createThing" href="#">Create a new thing</a>
+</p>
+
+<script type="text/javascript">
+  $('#createThing').click(function() {
+    $.post('@{createThing()}', {title: prompt('Thing title ?')}, function(thing) {
+      $('ul').prepend(
+        '<li><input type="checkbox" id="' + thing.id + '">' + thing.title + '</li>'
+      )
+    }, 'json');
+  });
+</script>
