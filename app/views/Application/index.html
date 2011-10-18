@@ -1,4 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+#{ifnot things}
+  <p>No things</p>
+#{/ifnot}
+
+<ul>
+  #{list items:things, as:"thing"}
+    <li>
+      <input type="checkbox" id="${thing.id}" ${thing.done ? 'checked' : ''} />
+      ${thing.title}
+    </li>
+  #{/list}
+</ul>

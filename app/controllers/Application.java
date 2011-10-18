@@ -10,7 +10,8 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+      List things = Thing.find("order by id desc").fetch();
+      render(things);
     }
 
 }
