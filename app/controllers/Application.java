@@ -18,5 +18,10 @@ public class Application extends Controller {
       Thing thing = new Thing(title).save();
       renderJSON(thing);
     }
-
+    public static void changeStatus(Long id, boolean bought) {
+      Thing thing = Thing.findById(id);
+      thing.bought = bought;
+      thing.save();
+      renderJSON(thing);
+    }
 }

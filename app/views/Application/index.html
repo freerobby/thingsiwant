@@ -26,4 +26,8 @@
       )
     }, 'json');
   });
+  
+  $('input').live('click', function() {
+    $.post('@{changeStatus()}', {id: $(this).attr('id'), bought: $(this).val()});
+  });
 </script>
